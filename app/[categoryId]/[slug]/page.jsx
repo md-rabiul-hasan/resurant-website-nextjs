@@ -1,4 +1,4 @@
-import { getCategoryPopularRecipies, getRecipieDetails } from "@/app/lib/helper";
+import { createSlug, getCategoryPopularRecipies, getRecipieDetails } from "@/app/lib/helper";
 
 // Component to display recipe details along with popular recipes
 export default async function RecipeDetailsPage(props) {
@@ -84,16 +84,19 @@ export default async function RecipeDetailsPage(props) {
         {/* Grid layout for popular recipes */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {popularRecipies.map((recipe, index) => (
-            <div key={index}>
-              {/* Thumbnail for each recipe */}
-              <img
-                src={`/thumbs/${recipe.thumbnail}`}
-                alt="Recipe"
-                className="w-full h-60 object-cover rounded-lg mb-2"
-              />
-              {/* Recipe title */}
-              <h3 className="font-semibold">{recipe.title}</h3>
-            </div>
+            <Link  href={`/${recipe.category_id}/${createSlug(recipe.title)}`} key={index}>
+              <div >
+                {/* Thumbnail for each recipe */}
+                <img
+                  src={`/thumbs/${recipe.thumbnail}`}
+                  alt="Recipe"
+                  className="w-full h-60 object-cover rounded-lg mb-2"
+                />
+                {/* Recipe title */}
+                <h3 className="font-semibold">{recipe.title}</h3>
+              </div>
+            </Link>
+            
           ))}
         </div>
       </section>
