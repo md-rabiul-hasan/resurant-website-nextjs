@@ -1,4 +1,5 @@
 import { createSlug, getCategoryPopularRecipies, getRecipieDetails } from "@/app/lib/helper";
+import Link from "next/link";
 
 // Component to display recipe details along with popular recipes
 export default async function RecipeDetailsPage(props) {
