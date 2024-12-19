@@ -1,4 +1,5 @@
-import { getCategoryInfo, getCategoryRecipes } from "@/app/lib/helper";
+import { createSlug, getCategoryInfo, getCategoryRecipes } from "@/app/lib/helper";
+import Link from "next/link";
 
 export default async function page(props) {
     const { categoryId } = await props.params;
@@ -24,7 +25,8 @@ export default async function page(props) {
 
     {
         recipies.map((recipe) => (
-            <div className="bg-white rounded-lg overflow-hidden shadow-md">
+          <Link href={`/${recipe.category_id}/${createSlug(recipe.title)}`}>
+           <div className="bg-white rounded-lg overflow-hidden shadow-md">
             <img
               src={`/thumbs/${recipe.thumbnail}`}
               alt="Tripple Chocolate Mousse Cake"
@@ -36,6 +38,8 @@ export default async function page(props) {
               </h2>
             </div>
           </div>
+          </Link>
+           
         ))
     }
 

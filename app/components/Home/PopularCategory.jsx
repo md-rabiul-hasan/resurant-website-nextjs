@@ -13,16 +13,19 @@ export default async function PopularCategory() {
         </div>
         <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
           {popularCategories.map((category, index) => (
-            <div key={index} className="cursor-pointer text-center group">
-              <div className="overflow-hidden rounded-full mb-2 w-20 h-20 mx-auto">
-                <img
-                  src={category.image}
-                  alt={category.name}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
+            <Link  href={`/categories/${category.id}`} key={index} >
+              <div className="cursor-pointer text-center group">
+                <div className="overflow-hidden rounded-full mb-2 w-20 h-20 mx-auto">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <p className="transition-transform duration-300 group-hover:scale-105">{category.name}</p>
               </div>
-              <p className="transition-transform duration-300 group-hover:scale-105">{category.name}</p>
-            </div>
+            </Link>
+            
           ))}
         </div>
       </section>
